@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<head>
+  <title>Finance Portfolio - Watchlist</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        background-image: url("stock-market-trading-graph-background-mutual-fund-commodity_1017-49908.avif");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        text-align: center;
+        padding: 20px;
+      background-color: #f5f7fa;
+      padding: 2rem;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    header h1 {
+      color: #2c3e50;
+    }
+
+    .watchlist-container {
+      max-width: 900px;
+      margin: auto;
+      background: #ffffff;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
+
+    .watchlist-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .watchlist-header h2 {
+      color: #34495e;
+    }
+
+    .add-stock-btn {
+      background-color: #3498db;
+      color: white;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .add-stock-btn:hover {
+      background-color: #2980b9;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ecf0f1;
+    }
+
+    th {
+      background-color: #ecf0f1;
+      color: #2c3e50;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    .price-up {
+      color: green;
+    }
+
+    .price-down {
+      color: red;
+    }
+  </style>
+</head>
+<body>  
+
+  <div class="watchlist-container">
+    <div class="watchlist-header">
+      <h2> STOCKS PORTFILIO</h2>
+      <button onclick="location.href='http://127.0.0.1:5500/miniproject.html'">+ Add Stock</button>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Symbol</th>
+          <th>Company</th>
+          <th>Price</th>
+          <th>Change</th>
+          <th>% Change</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>SBI</td>
+          <td>SBIN.</td>
+          <td>₹175.12</td>
+          <td class="price-up">+2.30</td>
+          <td class="price-up">+1.33%</td>
+        </tr>
+        <tr>
+          <td>GMR AIRPORT</td>
+          <td>GMR.CO</td>
+          <td>₹2,840.50</td>
+          <td class="price-down">-15.60</td>
+          <td class="price-down">-0.55%</td>
+        </tr>
+        <tr>
+          <td>YATHARTHA HISPITAL</td>
+          <td>YTH.IN</td>
+          <td>₹720.34</td>
+          <td class="price-up">+5.20</td>
+          <td class="price-up">+0.73%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

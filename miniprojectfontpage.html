@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<head>
+    <title>MINI PROJECT_HTML</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+        .graph-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            width: 100%;
+            height: 100%; 
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            padding-bottom: 40px;
+            gap: 30px;
+            z-index: 1;
+        }
+        .bar {
+            width: 60px;
+            margin: 0 15px;
+            position: relative;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            transition: height 0.5s ease-in-out, background-color 0.3s ease-in-out;
+        }
+
+        .bar-label {
+            position: absolute;
+            bottom: -30px;
+            width: 100%;
+            text-align: center;
+            font-weight: bold;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .bar-value {
+            position: absolute;
+            top: -25px;
+            width: 100%;
+            text-align: center;
+            font-size: 14px;
+            color: #000;
+            font-weight: bold;
+        }
+        .green-bar {
+            background-color: #4caf50;
+        }
+        .red-bar {
+            background-color: #f44336;
+        }
+        .container {
+            z-index: 2; 
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: black; 
+            margin-bottom: 20px;
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 15px 30px;
+            margin: 15px;
+            font-size: 1.2em;
+            border: none;
+            background-color: #333;
+            color: white;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease; 
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        button:hover {
+            background-color: #4caf50; 
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        button:active {
+            background-color: #45a049; 
+            transform: translateY(2px); 
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        button:focus {
+            outline: none; 
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.5);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="graph-container">
+        <div class="bar" id="bar1">
+            <div class="bar-value" id="price1">$150</div>
+            <div class="bar-label">SENSEXBANK</div>
+        </div>
+        <div class="bar" id="bar2">
+            <div class="bar-value" id="price2">$200</div>
+            <div class="bar-label">NIFTYBANK</div>
+        </div>
+        <div class="bar" id="bar3">
+            <div class="bar-value" id="price3">$100</div>
+            <div class="bar-label">SENSEX</div>
+        </div>
+        <div class="bar" id="bar4">
+            <div class="bar-value" id="price4">$180</div>
+            <div class="bar-label">NIFTY50</div>
+        </div>
+    </div>
+    <div class="container">
+        <h1>FINANCE PORTFILIO</h1>
+        <div class="buttons">
+            <button onclick="location.href='http://127.0.0.1:5500/watchlist.html'">STOCKS</button>
+            <button onclick="location.href='http://127.0.0.1:5500/MUTIUAL.HTML'">MUTUAL FUNDS</button>
+            <button onclick="location.href='http://127.0.0.1:5500/profile.html'">PROFILE</button>
+        </div>
+    </div>
+
+    <script>
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        function updatePrice(barId, priceId) {
+            const bar = document.getElementById(barId);
+            const priceElement = document.getElementById(priceId);
+            const currentHeight = bar.offsetHeight;
+            let price = parseFloat(priceElement.innerText.replace('$', ''));
+            if (currentHeight > 100) {
+                price += 5;
+            } else { 
+                price -= 5; 
+            }
+            priceElement.innerText = '$' + price.toFixed(2);
+        }
+        function randomizeBar(barId, priceId) {
+            const bar = document.getElementById(barId);
+            const randomHeight = getRandomInt(50, 220);
+            bar.style.height = randomHeight + 'px';
+            if (randomHeight > 100) {
+                bar.classList.remove('red-bar');
+                bar.classList.add('green-bar');
+            } else {
+                bar.classList.remove('green-bar');
+                bar.classList.add('red-bar');
+            }
+            updatePrice(barId, priceId);
+        }
+        setInterval(() => {
+            randomizeBar('bar1', 'price1');
+            randomizeBar('bar2', 'price2');
+            randomizeBar('bar3', 'price3');
+            randomizeBar('bar4', 'price4');
+            randomizeBar('bar5', 'price5');
+        }, getRandomInt(2000, 5000)); 
+    </script>
+
+</body>
+</html>

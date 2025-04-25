@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<head>
+  <title>Finance Portfolio</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        background-image: url("13849.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        text-align: center;
+        padding: 20px;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ccc;
+    }
+    th {
+      background-color: #f0f0f0;
+    }
+    .summary {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    input, button {
+      padding: 10px;
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  
+  <div class="container">
+    <h1>ADD STOCK</h1>
+    <div>
+      <input type="text" id="stockName" placeholder="Stock Name">
+      <input type="number" id="stockValue" placeholder="Value">
+      <button onclick="addStock()">Add</button>
+    </div>
+    <table id="portfolioTable">
+      <thead>
+        <tr>
+          <th>Stock Name</th>
+          <th>Value (₹)</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+    <div class="summary" id="totalValue">Total Amount Value: ₹0</div>
+  </div>
+
+  <script>
+    let total = 0;
+
+    function addStock() {
+      const name = document.getElementById('stockName').value;
+      const value = parseFloat(document.getElementById('stockValue').value);
+      if (name && !isNaN(value)) {
+        const table = document.getElementById('portfolioTable').getElementsByTagName('tbody')[0];
+        const newRow = table.insertRow();
+
+        const i = newRow.insertCell(0);
+        const j = newRow.insertCell(1);
+
+        i.textContent = name;
+        j.textContent = value.toFixed(2);
+
+        total += value;
+        document.getElementById('totalValue').textContent = `Total Amount Value: ₹${total.toFixed(2)}`;
+
+        document.getElementById('stockName').value = '';
+        document.getElementById('stockValue').value = '';
+      } else {
+        alert('Please enter valid stock name and value');
+      }
+    }
+  </script>
+</body>
+</html>
